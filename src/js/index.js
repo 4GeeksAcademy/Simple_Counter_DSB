@@ -1,13 +1,19 @@
-//import react into the bundle
+// Importa React y ReactDOM
 import React from "react";
 import ReactDOM from "react-dom/client";
+import SecondsCounter from "./component/SecondsCounter.jsx";
 
-// include your styles into the webpack bundle
+// Incluye tus estilos
 import "../styles/index.css";
 
-//import your own components
-import Home from "./component/home.jsx";
+// Crea el nodo raíz para React
+const root = ReactDOM.createRoot(document.getElementById('app'));
 
-//render your react application
-ReactDOM.createRoot(document.getElementById('app')).render(<Home/>);
+// Inicializa el contador en 0
+let seconds = 0;
 
+// Actualiza el contador cada segundo
+setInterval(() => {
+    root.render(<SecondsCounter seconds={seconds} />);
+    seconds++;
+}, 1000);
